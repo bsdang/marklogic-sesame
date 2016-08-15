@@ -538,4 +538,13 @@ public class MarkLogicClient {
 			return s;
 		}
 	}
+
+	/**
+	 *exec
+	 * @param command
+	 */
+	public void close() {
+		_client.close();		
+	}
+	
 }
