@@ -154,7 +154,10 @@ class MarkLogicClientImpl {
         SPARQLQueryDefinition qdef = sparqlManager.newQueryDefinition(queryString);
         if(notNull(baseURI) && baseURI != ""){ qdef.setBaseUri(baseURI);}
         if (notNull(ruleset)){qdef.setRulesets(ruleset);}
-        if (notNull(getConstrainingQueryDefinition())) {qdef.setConstrainingQueryDefinition(getConstrainingQueryDefinition());}
+        if (notNull(getConstrainingQueryDefinition())) {
+        	qdef.setConstrainingQueryDefinition(getConstrainingQueryDefinition());
+        	qdef.setOptionsName(getConstrainingQueryDefinition().getOptionsName());
+        	}
         qdef.setIncludeDefaultRulesets(includeInferred);
         if(notNull(graphPerms)){ qdef.setUpdatePermissions(graphPerms);}
         if(pageLength > 0){
@@ -194,7 +197,10 @@ class MarkLogicClientImpl {
         SPARQLQueryDefinition qdef = sparqlManager.newQueryDefinition(queryString);
         if(notNull(baseURI) && baseURI != ""){ qdef.setBaseUri(baseURI);}
         if (notNull(ruleset)) {qdef.setRulesets(ruleset);}
-        if (notNull(getConstrainingQueryDefinition())){qdef.setConstrainingQueryDefinition(getConstrainingQueryDefinition());}
+        if (notNull(getConstrainingQueryDefinition())){
+        	qdef.setConstrainingQueryDefinition(getConstrainingQueryDefinition());
+        	qdef.setOptionsName(getConstrainingQueryDefinition().getOptionsName());
+        }
         if(notNull(graphPerms)){ qdef.setUpdatePermissions(graphPerms);}
         qdef.setIncludeDefaultRulesets(includeInferred);
         sparqlManager.executeDescribe(qdef, handle, tx);
@@ -216,7 +222,10 @@ class MarkLogicClientImpl {
         if(notNull(baseURI) && baseURI != ""){ qdef.setBaseUri(baseURI);}
         qdef.setIncludeDefaultRulesets(includeInferred);
         if (notNull(ruleset)) {qdef.setRulesets(ruleset);}
-        if (notNull(getConstrainingQueryDefinition())){qdef.setConstrainingQueryDefinition(getConstrainingQueryDefinition());}
+        if (notNull(getConstrainingQueryDefinition())){
+        	qdef.setConstrainingQueryDefinition(getConstrainingQueryDefinition());
+        	qdef.setOptionsName(getConstrainingQueryDefinition().getOptionsName());
+        }
         if(notNull(graphPerms)){ qdef.setUpdatePermissions(graphPerms);}
         return sparqlManager.executeAsk(qdef,tx);
     }
